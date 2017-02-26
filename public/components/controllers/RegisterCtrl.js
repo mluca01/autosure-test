@@ -50,7 +50,7 @@
 
             $scope.submitDetails = function () {
                 $scope.$broadcast('show-errors-check-validity');
-                if ($scope.firstName === '' || $scope.firstName.length === 0 || $scope.lastName === '' || $scope.lastName.length === 0 || $scope.emailAdd === '' || $scope.emailAdd.length === 0 || $scope.address === '' || $scope.address.length === 0 || $scope.city === '' || $scope.city.length === 0 || $scope.zip === '' || $scope.zip.length === 0 || $scope.item === '' || $scope.item.length === 0) {
+                if (typeof $scope.firstName === 'undefined' || $scope.firstName === '' || $scope.firstName.length === 0 || typeof $scope.lastName === 'undefined' || $scope.lastName === '' || $scope.lastName.length === 0 || typeof $scope.emailAdd === 'undefined' || $scope.emailAdd === '' || $scope.emailAdd.length === 0 || typeof $scope.address === 'undefined' || $scope.address === '' || $scope.address.length === 0 || typeof $scope.city === 'undefined' || $scope.city === '' || $scope.city.length === 0 || typeof $scope.zip === 'undefined' || $scope.zip === '' || $scope.zip.length === 0 || $scope.item === '' || $scope.item.length === 0) {
                     $scope.message = 'Please complete the missing fields.';
                     openModal($scope.message);
                 } else {
