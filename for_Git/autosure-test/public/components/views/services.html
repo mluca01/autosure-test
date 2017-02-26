@@ -1,0 +1,84 @@
+<!-- Service -->
+<section id="service" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <h2>Our Service</h2>
+                <hr class="botm-line">
+                <div style="margin:20px 0px 30px 0px;"></div>
+                <p>This web application allows customers to get instant car insurance quotes based on their selections.</p>
+                <div style="margin-bottom:10px">
+                    <h3>How to get a quote?</h3>
+                    <p>
+                        <span class="glyphicon glyphicon-ok" style="color:#ffb737;"></span> Select a car make, model and year. The value will be displayed in the box below.
+                    </p>
+                    <p>
+                        <span class="glyphicon glyphicon-ok" style="color:#ffb737;"></span> Click the 'Get a quote' button to view the policies.
+                    </p>
+                </div>
+
+                <div style="margin:20px 0px 130px 0px;"></div>
+                <div class="panel-value">
+                    <ul class="list-group text-center">
+                        <li class="list-group-item"><strong>Value:  {{carValue.value | currency:"PHP ":0}}</strong></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="col-md-6 col-sm-6">
+                <div class="service-info">
+                    <div class="icon-info">
+                        <div style="margin:20px 0px 60px 0px;"></div>
+                        <div>
+                            <!--<h5>Car Make: {{make.selected}}</h5> -->
+                            <h4>Car Make</h4>
+                            <ui-select ng-model="make.selected" theme="bootstrap" style="width:90%" on-select="onSelectCallback(make.selected.car_make);">
+                                <ui-select-match placeholder="Select or search a car make from the list...">{{$select.selected.car_make}}</ui-select-match>
+                                <ui-select-choices repeat="item in makeDetails | selectFilter: {car_make: $select.search, makeId: $select.search}">
+                                    <div ng-bind-html="item.car_make | highlight: $select.search"></div>
+                                    <small>
+                                    Car Make ID: {{item.makeId}}        
+                                </small>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+
+                        <div style="margin:20px 0px 20px 0px;"></div>
+                        <div>
+                            <!-- <h5>Car Model: {{model.selected}}</h5> -->
+                            <h4>Car Model</h4>
+                            <ui-select ng-model="model.selected" theme="bootstrap" style="width:90%" on-select="onSelectCallback2(model.selected.value);">
+                                <ui-select-match placeholder="Select or search a car model...">{{$select.selected.car_model}}</ui-select-match>
+                                <ui-select-choices repeat="item in modelResults | selectFilter: {car_model: $select.search, value: $select.search}">
+                                    <div ng-bind-html="item.car_model | highlight: $select.search"></div>
+                                    <small>
+                                    Value: {{item.value}}        
+                                </small>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+
+                        <div style="margin:20px 0px 20px 0px;"></div>
+                        <div>
+                            <!-- <h5>Year: {{yearSelected}}</h5> -->
+                            <h4>Year</h4>
+                            <select ng-model="yearSelected" ng-options="itemYear for itemYear in years" class="selectYear" ng-change="onSelectYear(yearSelected)" ng-required="true" style="width:90%">
+                                <option value="">-- Select --</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <input type="text" ng-model="model.selected.value" style="display: none;" />
+                            <input type="text" ng-model="yearSelected" style="display: none;" />
+                        </div>
+
+                        <div style="margin:20px 0px 20px 0px;"></div>
+                        <button ng-click="submitQuote(carValue.value)" class="btn btn-service">Get a Quote</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
