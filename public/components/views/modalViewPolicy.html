@@ -1,0 +1,35 @@
+<div class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="closeModal()" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">{{title}}</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row modal-label">
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="result in results">
+                            <span class="glyphicon glyphicon-chevron-right"></span> Policy: <strong> {{policyResults.name}} </strong>
+                            <br>
+                            <br><span class="glyphicon glyphicon-chevron-right"></span> Description: <strong>{{result.description}}</strong>
+                            <strong><br><br>{{result.coverage1}}<br></strong>
+                        </li>
+                        <li class="list-group-item">
+                            <span class="glyphicon glyphicon-chevron-right"></span> Coverage:
+                        </li>
+                        <li class="list-group-item2 text-justify" ng-repeat="cov in policyResults.coverage">
+                            <span class="glyphicon glyphicon-chevron-right"></span> {{cov}}
+                        </li>
+                    </ul>
+                    <ul class="list-group">
+                        <li class="list-group-item"><span class="glyphicon glyphicon-check"></span> Amount: <strong>{{ amount | currency:"PHP ":0 }}</strong></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" ng-click="closeModal()" class="btn btn-select-policy" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
