@@ -1,0 +1,108 @@
+<div class="cd-pricing-container cd-has-margins">
+
+    <ul class="cd-pricing-list">
+        <li>
+            <header class="cd-pricing-header">
+                <h2>CTPL</h2>
+
+                <div class="cd-price">
+                    <span class="cd-value">{{ insuredAmountCTPL | currency:"PHP " }}</span>
+                </div>
+            </header>
+
+            <div class="panel-pricing">
+                <ul class="list-group text-center">
+                    <li class="list-group-item"><strong>Compulsory Third Party Liability (CTPL)</strong></li>
+                    <li class="list-group-item">Cost Value: <strong>{{ costValue | currency:"PHP ":0 }}</strong></li>
+                    <li class="list-group-item text-justify"><strong> C o v e r a g e </strong></li>
+                    <li class="list-group-item text-justify" ng-repeat="coverage in coverageCtpl">
+                        <span class="glyphicon glyphicon-chevron-right"></span> {{coverage}}
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="panel-addons">
+                <ul class="list-group text-center">
+                    <li class="list-group-item"><strong>Add-ons </strong></li>
+                    <li class="list-group-item text-justify" ng-repeat="addon in addons1">
+                        <input type="checkbox" checklist-model="getAddOns1()" checklist-value="addon" ng-change="checkCTPL(addon, checked)"> {{addon}}
+                    </li>
+                </ul>
+            </div>
+
+            <footer class="cd-pricing-footer">
+                <a class="cd-select" ui-sref="register({ name: nameCTPL, amount: insuredAmountCTPL })">Select Policy</a>
+            </footer>
+
+        </li>
+        <li class="cd-popular">
+            <header class="cd-pricing-header">
+                <h2>Comprehensive</h2>
+
+                <div class="cd-price">
+                    <span class="cd-value">{{ insuredAmountComp | currency:"PHP " }}</span>
+                </div>
+            </header>
+
+            <div class="panel-pricing">
+                <ul class="list-group text-center">
+                    <li class="list-group-item"><strong>Comprehensive Car Insurance</strong></li>
+                    <li class="list-group-item">Cost Value: <strong>{{ costValue | currency:"PHP ":0 }}</strong></li>
+                    <li class="list-group-item text-justify"><strong> C o v e r a g e </strong></li>
+                    <li class="list-group-item text-justify" ng-repeat="coverage in coverageComprehensive">
+                        <span class="glyphicon glyphicon-chevron-right"></span> {{coverage}}
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="panel-addons">
+                <ul class="list-group text-center">
+                    <li class="list-group-item"><strong>Add-ons </strong></li>
+                    <li class="list-group-item text-justify" ng-repeat="addon in addons2">
+                        <input type="checkbox" checklist-model="getAddOns2()" checklist-value="addon" ng-change="checkComp(addon, checked)"> {{addon}}
+                    </li>
+                </ul>
+            </div>
+
+
+            <footer class="cd-pricing-footer">
+                <a class="cd-select" ui-sref="register({ name: nameComp, amount: insuredAmountComp })">Select Policy</a>
+            </footer>
+        </li>
+        <li>
+            <header class="cd-pricing-header">
+                <h2>Full Protection</h2>
+                <div class="cd-price">
+                    <span class="cd-value">{{ insuredAmountFull | currency:"PHP " }}</span>
+                </div>
+            </header>
+
+            <div class="panel-pricing">
+                <ul class="list-group text-center">
+                    <li class="list-group-item"><strong>Comprehensive Car Insurance with Acts of Nature Coverage</strong></li>
+                    <li class="list-group-item">Cost Value: <strong>{{ costValue | currency:"PHP ":0 }}</strong></li>
+                    <li class="list-group-item text-justify"><strong> C o v e r a g e </strong></li>
+                    <li class="list-group-item text-justify" ng-repeat="coverage in coverageFull">
+                        <span class="glyphicon glyphicon-chevron-right"></span> {{coverage}}
+                    </li>
+                </ul>
+            </div>
+
+            <div class="panel-addons">
+                <ul class="list-group text-center">
+                    <li class="list-group-item"><strong>Add-ons </strong></li>
+                    <li class="list-group-item text-justify" ng-repeat="addon in addons3">
+                        <input type="checkbox" checklist-model="getAddOns3()" checklist-value="addon" ng-change="checkFull(addon, checked)"> {{addon}}
+                    </li>
+                </ul>
+            </div>
+
+
+            <footer class="cd-pricing-footer">
+                <a class="cd-select" ui-sref="register({ name: nameFull, amount: insuredAmountFull })">Select Policy</a>
+            </footer>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,113 @@
+<!-- register -->
+<section id="register" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div>
+                <h2>Personal Information</h2>
+                <hr class="botm-line">
+                <div style="margin:20px 0px 20px 0px;"></div>
+
+                <form class="well form-horizontal" name="registerForm" novalidate="">
+                    <fieldset>
+                        <!--<legend>Personal Information</legend> -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">First Name</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group" show-errors="{ showSuccess: true }">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input type="text" name="firstName" ng-model="firstName" placeholder="First Name" class="form-control" ng-required />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Last Name</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group" show-errors="{ showSuccess: true }">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input type="text" ng-model="lastName" name="lastName" placeholder="Last Name" class="form-control" ng-required />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">E-Mail</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group" show-errors="{ showSuccess: true }">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                    <input type="email" name="emailAdd" ng-model="emailAdd" placeholder="E-Mail Address" class="form-control" ng-required />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Phone #</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group" show-errors="{ showSuccess: true }">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                                    <input type="text" name="phone" ng-model="phone" placeholder="(+63)777-1212" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Address</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group" show-errors="{ showSuccess: true }">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                    <input type="text" name="address" ng-model="address" placeholder="Address" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">City</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group" show-errors="{ showSuccess: true }">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                    <input type="text" name="city" ng-model="city" placeholder="City" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Country</label>
+                            <div class="col-md-4 selectContainer">
+                                <div class="input-group" show-errors="{ showSuccess: true }">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                    <select ng-model="item" name="state" class="form-control selectpicker" ng-options="item.name for item in countryDetails track by item.name">
+                                        <option value="">-- Please select your country --</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">Zip Code</label>
+                            <div class="col-md-4 inputGroupContainer">
+                                <div class="input-group" show-errors="{ showSuccess: true }">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                    <input type="text" name="zip" ng-model="zip" placeholder="Zip Code" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-show="returnMessage.length!=0">
+                            <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> {{ returnMessage }}</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label"></label>
+                            <div class="col-md-4">
+                                <button type="button" class="btn btn-select-policy" ng-click="viewPolicy()">View Policy <span class="glyphicon glyphicon-folder-open"></span></button>
+                                <button type="submit" class="btn btn-register" ng-click="submitDetails()">Submit Information <span class="glyphicon glyphicon-send"></span></button>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /register -->
