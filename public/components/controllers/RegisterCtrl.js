@@ -2,12 +2,25 @@
     'use strict';
 
     angular.module('Autosure.controllers')
-        .controller('RegisterCtrl', ['$scope', '$http', '$state', '$stateParams', '$window', '$location', '$uibModal', 'PromiseUtils', 'ModalService', function ($scope, $http, $state, $stateParams, $window, $location, $uibModal, PromiseUtils, ModalService) {
+        .controller('RegisterCtrl', ['$scope', '$http', '$state', '$stateParams', '$window', '$location', '$uibModal', 'PromiseUtils', 'ModalService', 'localStorageService', function ($scope, $http, $state, $stateParams, $window, $location, $uibModal, PromiseUtils, ModalService, localStorageService) {
 
             $scope.name = $stateParams.name;
             console.log("Selected Policy: " + $scope.name);
             $scope.insuredAmount = $stateParams.amount;
             console.log("Insured Amount: " + $scope.insuredAmount);
+
+            if ($scope.name != $scope.policyName || $scope.insuredAmount != $scope.policyAmount) {
+                localStorageService.remove('localStorageKey', $scope.policyName, $scope.policyAmount);
+                $scope.policyName = $scope.name;
+                $scope.policyAmount = $scope.insuredAmount;
+                localStorageService.set('localStorageKey', $scope.policyName, $scope.policyAmount);
+                console.log('Register: Updated Name = ' + $scope.policyName + '; Amount = ' + $scope.policyAmount);
+            } else {
+                $scope.policyName = $scope.name;
+                $scope.policyAmount = $scope.insuredAmount;
+                localStorageService.set('localStorageKey', $scope.policyName, $scope.policyAmount);
+                console.log('Register: Name = ' + $scope.policyName + '; Amount = ' + $scope.policyAmount);
+            }
 
             $scope.countryDetails = [];
             $scope.returnMessage = '';
@@ -50,7 +63,7 @@
 
             $scope.submitDetails = function () {
                 $scope.$broadcast('show-errors-check-validity');
-                if (typeof $scope.firstName === 'undefined' || $scope.firstName === '' || $scope.firstName.length === 0 || typeof $scope.lastName === 'undefined' || $scope.lastName === '' || $scope.lastName.length === 0 || typeof $scope.emailAdd === 'undefined' || $scope.emailAdd === '' || $scope.emailAdd.length === 0 || typeof $scope.address === 'undefined' || $scope.address === '' || $scope.address.length === 0 || typeof $scope.city === 'undefined' || $scope.city === '' || $scope.city.length === 0 || typeof $scope.zip === 'undefined' || $scope.zip === '' || $scope.zip.length === 0 || $scope.item === '' || $scope.item.length === 0) {
+                if (typeof $scope.firstName === 'undefined' || $scope.firstName.length === 0 || typeof $scope.lastName === 'undefined' || $scope.lastName.length === 0 || typeof $scope.emailAdd === 'undefined' || $scope.emailAdd.length === 0 || typeof $scope.address === 'undefined' || $scope.address.length === 0 || typeof $scope.city === 'undefined' || $scope.city.length === 0 || typeof $scope.zip === 'undefined' || $scope.zip.length === 0 || $scope.item === '' || $scope.item.length === 0) {
                     $scope.message = 'Please complete the missing fields.';
                     openModal($scope.message);
                 } else {
@@ -64,8 +77,12 @@
                     controller: 'ModalViewPolicyCtrl',
                     inputs: {
                         title: 'Selected Policy',
+                        /*
                         policyName: $scope.name,
                         amount: $scope.insuredAmount
+                        */
+                        policyName: $scope.policyName,
+                        amount: $scope.policyAmount
 
                     },
                 }).then(function (modal) {

@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('Autosure.controllers')
-        .controller('ServiceCtrl', ['$scope', '$http', '$window', '$state', '$location', '$filter', '$uibModal', 'PromiseUtils', 'ItemsMake', 'Makes', 'Models', 'SharedService', function ($scope, $http, $window, $state, $location, $filter, $uibModal, PromiseUtils, ItemsMake, Makes, Models, SharedService) {
+        .controller('ServiceCtrl', ['$scope', '$http', '$window', '$state', '$location', '$filter', '$uibModal', 'PromiseUtils', 'ItemsMake', 'Makes', 'Models', 'SharedService', 'localStorageService', function ($scope, $http, $window, $state, $location, $filter, $uibModal, PromiseUtils, ItemsMake, Makes, Models, SharedService, localStorageService) {
 
             $scope.make = {};
             $scope.model = {};
@@ -143,6 +143,7 @@
             };
 
             $scope.submitQuote = function (value) {
+                localStorageService.clearAll();
                 $scope.carval = value;
                 console.log('in submit: ' + $scope.carval);
                 $scope.submitted = $scope.currentYear - $scope.yearSelected;
@@ -167,6 +168,7 @@
                 }
 
             };
+
         }]);
 
 }());

@@ -2,9 +2,9 @@
     'use strict';
 
     (function () {
-        var Autosure = angular.module('Autosure', ['Autosure.controllers', 'Autosure.services', 'ui.router', 'lbServices', 'ngSanitize', 'ui.select', 'ui.bootstrap', 'angularModalService', 'ui.bootstrap.showErrors', 'checklist-model']);
+        var Autosure = angular.module('Autosure', ['Autosure.controllers', 'Autosure.services', 'ui.router', 'lbServices', 'ngSanitize', 'ui.select', 'ui.bootstrap', 'angularModalService', 'ui.bootstrap.showErrors', 'checklist-model', 'LocalStorageModule']);
 
-        Autosure.config(function ($stateProvider, $urlRouterProvider, $httpProvider, LoopBackResourceProvider, showErrorsConfigProvider) {
+        Autosure.config(function ($stateProvider, $urlRouterProvider, $httpProvider, LoopBackResourceProvider, showErrorsConfigProvider, localStorageServiceProvider) {
             LoopBackResourceProvider.setAuthHeader('X-Access-Token');
             // LoopBack REST API server
             LoopBackResourceProvider.setUrlBase('https://autosure.mybluemix.net/api');
@@ -15,6 +15,12 @@
             delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
             showErrorsConfigProvider.showSuccess(true);
+
+            // LocalStorage config
+            localStorageServiceProvider
+                .setPrefix('Autosure')
+                .setStorageType('sessionStorage')
+                .setNotify(true, true);
 
             $urlRouterProvider.otherwise('/home');
             $stateProvider

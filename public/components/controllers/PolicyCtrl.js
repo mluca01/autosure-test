@@ -2,9 +2,11 @@
     'use strict';
 
     angular.module('Autosure.controllers')
-        .controller('PolicyCtrl', ['$scope', '$http', '$state', '$stateParams', '$window', '$location', 'PromiseUtils', 'SharedService', 'PolicyCTPL', 'PolicyComprehensive', 'PolicyFull', 'PolicyCost', function ($scope, $http, $state, $stateParams, $window, $location, PromiseUtils, SharedService, PolicyCTPL, PolicyComprehensive, PolicyFull, PolicyCost) {
+        .controller('PolicyCtrl', ['$scope', '$http', '$state', '$stateParams', '$window', '$location', 'PromiseUtils', 'SharedService', 'PolicyCTPL', 'PolicyComprehensive', 'PolicyFull', 'PolicyCost', 'localStorageService', function ($scope, $http, $state, $stateParams, $window, $location, PromiseUtils, SharedService, PolicyCTPL, PolicyComprehensive, PolicyFull, PolicyCost, localStorageService) {
 
             $scope.costValue = $stateParams.value;
+            localStorageService.set('localStorageKey', $scope.costValue);
+            //$scope.costValue = localStorageService.get('localStorageKey');
             console.log("Cost value: " + $scope.costValue);
             $scope.insuredAmount = {};
 

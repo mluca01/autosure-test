@@ -2,12 +2,11 @@
     'use strict';
 
     angular.module('Autosure.controllers')
-        .controller('ModalViewPolicyCtrl', ['$scope', '$element', '$http', 'PromiseUtils', 'close', 'title', 'policyName', 'amount', function ($scope, $element, $http, PromiseUtils, close, title, policyName, amount) {
+        .controller('ModalViewPolicyCtrl', ['$scope', '$element', '$http', 'PromiseUtils', 'close', 'title', 'policyName', 'amount', 'localStorageService', function ($scope, $element, $http, PromiseUtils, close, title, policyName, amount, localStorageService) {
 
             $scope.title = title;
             $scope.policy = policyName;
             $scope.amount = amount;
-
 
             $scope.policyDetails = {
                 "PIDs": {
@@ -61,8 +60,6 @@
             $scope.displayPolicy = displayPolicy;
             displayPolicy(policyName);
 
-
-
             var requestPromise_Policy = $http({
                 method: 'GET',
                 url: 'https://autosure.mybluemix.net/api/policies/' + $scope.policy,
@@ -79,8 +76,6 @@
                 }
 
             });
-
-
 
             $scope.closeModal = function () {
                 $element.modal('hide');

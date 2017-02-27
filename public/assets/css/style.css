@@ -124,6 +124,10 @@ hr.botm-line {
     border-top-left-radius: 0px;
 }
 
+.warning {
+    border: 1px solid red;
+}
+
 
 /***************************************
 banner

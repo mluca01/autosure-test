@@ -7,7 +7,7 @@
             $scope.submitMessage = function (contact) {
                 $scope.name = contact;
 
-                if (typeof $scope.contactName === 'undefined' || $scope.contactName === '' || $scope.contactName.length === 0 || typeof $scope.emailAdd === 'undefined' || $scope.emailAdd === '' || $scope.emailAdd.length === 0 || $scope.subject === '' || typeof $scope.subject === 'undefined' || $scope.subject.length === 0 || typeof $scope.contactMessage === 'undefined' || $scope.contactMessage === '' || $scope.contactMessage.length === 0) {
+                if (typeof $scope.contactName === 'undefined' || $scope.contactName.length === 0 || typeof $scope.emailAdd === 'undefined' || $scope.emailAdd.length === 0 || typeof $scope.subject === 'undefined' || $scope.subject.length === 0 || typeof $scope.contactMessage === 'undefined' || $scope.contactMessage.length === 0) {
                     $scope.message = 'Please complete all fields.';
                     openModal($scope.message);
 
